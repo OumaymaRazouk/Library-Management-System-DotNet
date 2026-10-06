@@ -1,0 +1,95 @@
+﻿@page
+@model GestionLivres.Pages.Categorie.createCModel
+@{
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Auteurs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa; /* Light gray background color */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #e44d26; /* A vibrant red-orange color */
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6; /* Bootstrap table border color */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* Lighter gray on hover */
+        }
+
+        .btn-primary {
+            background-color: #3498db; /* A vibrant blue color */
+            border: 1px solid #3498db;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c; /* A vibrant red color */
+            border: 1px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <br />
+    <h2>Nouvelle Categorie</h2>
+    @if (Model.errorMessage.Length > 0)
+    {
+        <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+            <strong>@Model.errorMessage</strong>
+            <button type='button' class='btn_close' date-bs-dismiss='alert' arialabel='Close'></button>
+        </div>
+    }
+    <form method="post">
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Nom</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="NomCat" value="@Model.CategorieInfo.NomCat">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="DescriptionCat" value="@Model.CategorieInfo.DescriptionCat">
+            </div>
+        </div>
+       
+        @if (Model.SuccessMessage.Length > 0)
+        {
+            <div class="row mb-3">
+                <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    <strong>@Model.SuccessMessage</strong>
+                    <button type='button' class='btn_close' date-bs-dismiss='alert' arialabel='Close'></button>
+                </div>
+            </div>
+        }
+        <div class="row mb-3">
+            <div class="offset-sm3 col-sm-3 d-grid">
+                <button type="submit" class="btn btn-primary"> Submit </button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+            </div>
+        </div>
+    </form>
+    </body>
+    </html>
+}

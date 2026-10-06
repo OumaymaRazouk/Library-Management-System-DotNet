@@ -1,0 +1,28 @@
+/* Set base font size and add some vibrant colors */
+html {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Adjust font size for larger screens and change text color */
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+        color: #555;
+    }
+}
+
+/* Ensure the body covers at least the full height of the viewport with a gradient background */
+html {
+    position: relative;
+    min-height: 100%;
+    background: linear-gradient(to bottom, #3498db, #2ecc71); /* Gradient background from blue to green */
+}
+
+/* Add some padding, a background color, and box shadow to the body */
+body {
+    margin-bottom: 60px;
+    padding: 20px;
+    background-color: #fff; /* White background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow for a lifted appearance */
+}

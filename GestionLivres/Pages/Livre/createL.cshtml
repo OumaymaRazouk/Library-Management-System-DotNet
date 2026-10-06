@@ -1,0 +1,123 @@
+﻿@page
+@model GestionLivres.Pages.Livre.createLModel
+@{
+   
+}
+
+   <h2>Ajouter Livre</h2>
+@if (Model.ErrorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.ErrorMessage</strong>
+        <button type='button' class='btn_close' date-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+@if (Model.SuccessMessage.Length > 0)
+{
+    <div class="row mb-3">
+        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+            <strong>@Model.SuccessMessage</strong>
+            <button type='button' class='btn_close' date-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+    </div>
+}
+
+    <form method="post" asp-page-handler="OnPost">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Titre</label>
+        <div class="col-sm-6">
+                    <input type="text" class="form-control" name="titre" value="@Model.LivreInfo.Titre">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">ISBN</label>
+        <div class="col-sm-6">
+                    <input type="text" class="form-control" name="isbn" value="@Model.LivreInfo.SPM">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nom Editeur</label>
+        <div class="col-sm-6">
+            <select class="form-control" name="idediteur" formControlName="idediteur">
+                @if (Model.Editeur != null)
+                {
+                    @foreach (var editeur in Model.Editeur)
+                    {
+                                @if (editeur.IDEditeur == Model.LivreInfo.IDEditeur)
+                        {
+                            <option value="@editeur.IDEditeur " selected>@editeur.NomEditeur</option>
+                        }
+                        else
+                        {
+                            <option value="@editeur.IDEditeur">@editeur.NomEditeur</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nom Auteur</label>
+        <div class="col-sm-6">
+            <select class="form-control" name="idauteur">
+                @if (Model.Auteur != null)
+                {
+                    @foreach (var auteur in Model.Auteur)
+                    {
+                                @if (auteur.IDAuteur == Model.LivreInfo.IDAuteur)
+                        {
+                            <option value="@auteur.IDAuteur " selected>@auteur.NomAuteur</option>
+                        }
+                        else
+                        {
+                            <option value="@auteur.IDAuteur ">@auteur.NomAuteur</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nom Categorie</label>
+        <div class="col-sm-6">
+            <select class="form-control" name="idcategorie">
+                @if (Model.Categorie != null)
+                {
+                    @foreach (var categorie in Model.Categorie)
+                    {
+                                @if (categorie.IDCat == Model.LivreInfo.IDCat)
+                        {
+                            <option value="@categorie.IDCat" selected>@categorie.NomCat</option>
+                        }
+                        else
+                        {
+                            <option value="@categorie.IDCat">@categorie.NomCat</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Description</label>
+        <div class="col-sm-6">
+                    <input type="text" class="form-control" name="description" value="@Model.LivreInfo.DescripLivre">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Annee Edition</label>
+        <div class="col-sm-6">
+                    <input type="text" class="form-control" name="anneedit" value="@Model.LivreInfo.AnneeEdition">
+        </div>
+    </div>
+    <div class="offset-sm3 col-sm-3 d-grid">
+        <button type="submit" class="btn btn-primary"> Submit </button>
+    </div>
+    </br>
+    <div class="col-sm-3 d-grid">
+        <a class="btn btn-outline-primary" href="/Livre/Livre" role="button">Cancel</a>
+    </div>
+    
+    </form>
+ 

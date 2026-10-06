@@ -1,0 +1,88 @@
+﻿@page
+@model GestionLivres.Pages.LivreModel
+@{}
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Auteurs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa; /* Light gray background color */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #e44d26; /* A vibrant red-orange color */
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6; /* Bootstrap table border color */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* Lighter gray on hover */
+        }
+
+        .btn-primary {
+            background-color: #3498db; /* A vibrant blue color */
+            border: 1px solid #3498db;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c; /* A vibrant red color */
+            border: 1px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+<br>
+<h2> liste des livres</h2>
+<a class='btn btn-primary btn-sm' href='/Livre/createL'> Nouveau livre</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID </th>
+            <th>Titre </th>
+            <th>SPM </th>
+            <th>ID Editeur </th>
+            <th>ID Auteur </th>
+            <th>ID Cat </th>
+            <th>Descrip Livre </th>
+            <th>AnneeEdition </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listLivre)
+        {
+            <tr>
+                <td>@item.IDLivre</td>
+                <td>@item.Titre</td>
+                <td>@item.SPM</td>
+                <td>@item.IDEditeur</td>
+                <td>@item.IDAuteur</td>
+                <td>@item.IDCat</td>
+                <td>@item.DescripLivre</td>
+                <td>@item.AnneeEdition</td>
+                <td>
+                        <a class='btn btn-primary btn-sm' href='/Livre/EditL?IDLivre=@item.IDLivre'> Editer </a>
+                        <a class='btn btn-danger btn-sm' href='/Livre/DeleteL?IDLivre=@item.IDLivre'> supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</body>
+</html>
